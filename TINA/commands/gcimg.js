@@ -1,37 +1,37 @@
 const axios = require("axios");
-const fs = require("fs-extra");
-const tinyurl = require("tinyurl");
 const baseApiUrl = async () => {
-  
-  return `https://www.noobs-api.rf.gd/dipto`
-};
+    const base = await axios.get(
+        `https://raw.githubusercontent.com/Mostakim0978/D1PT0/refs/heads/main/baseApiUrl.json`,
+    );
     return base.data.api;
 };
 const { createReadStream, unlinkSync, writeFileSync } = require("fs-extra");
 
 async function getAvatarUrls(userIDs) {
     let avatarURLs = [];
-    try {
-        for (let userID of userIDs) {
+    for (let userID of userIDs) {
+            try {
             const url = `https://graph.facebook.com/${userID}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
             avatarURLs.push(url);
-        }
-        return avatarURLs;
+        
     } catch (error) {
-        return avatarURLs.push(
-            "https://i.ibb.co/qk0bnY8/363492156-824459359287620-3125820102191295474-n-png-nc-cat-1-ccb-1-7-nc-sid-5f2048-nc-eui2-Ae-HIhi-I.png",
-        );
+         avatarURLs.push("https://i.ibb.co/qk0bnY8/363492156-824459359287620-3125820102191295474-n-png-nc-cat-1-ccb-1-7-nc-sid-5f2048-nc-eui2-Ae-HIhi-I.png");
     }
+}
+    return avatarURLs;
 }
 module.exports = {
     config: {
         name: "gcimg",
         version: "1.0",
-        credits: "RAHAT",
+        credits: "RAHAT KHAN",
         cooldowns: 5,
         hasPermission: 0,
         description: "𝗚𝗲𝘁 𝗚𝗿𝗼𝘂𝗽 𝗜𝗺𝗮𝗴𝗲",
+        usePrefix: true,
+        prefix: true,
         commandCategory: "𝗜𝗠𝗔𝗚𝗘",
+        category: " image",
         usages: "{pn} --color [color] --bgcolor [color] --admincolor [color] --membercolor [color]",
     },
 
@@ -87,7 +87,7 @@ module.exports = {
                 );
             }
             const { data } = await axios.post(
-                `${await baseApiUrl()}/groupPhoto`,
+                `${await baseApiUrl()}/gcimg`,
                 data2,
             );
             const path = __dirname + "/cache/gcimg.png";
