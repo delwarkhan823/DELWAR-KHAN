@@ -7,10 +7,10 @@ const baseApiUrl = async () => {
 };
 
 const config = {
-  name: "autolink",
+  name: "autodl",
   version: "2.0",
-  author: "RAHAT",
-  credits: "RAHAT",
+  author: "Dipto",
+  credits: "KHAN",
   description: "Auto download video from tiktok, facebook, Instagram, YouTube, and more",
   category: "media",
   commandCategory: "media",
@@ -24,7 +24,7 @@ const config = {
 
 const onStart = () => {};
 const onChat = async ({ api, event }) => {
-  let dipto = event.body ? event.body : "", ex, cp;
+  let dipto = event.body ? event.body : "Khan Rahul RK", ex, cp;
   try {
     if (
       dipto.startsWith("https://vt.tiktok.com") ||
